@@ -53,6 +53,7 @@ module Rails4Autocomplete
             class_name = options[:class_name] || object
             items = get_autocomplete_items(:model => get_object(class_name), \
               :options => options, :term => term, :method => method)
+            items = items.group(method) unless options[:distinct].blank?
           else
             items = {}
           end
